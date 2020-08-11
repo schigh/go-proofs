@@ -1,0 +1,33 @@
+go version go1.14.5 darwin/amd64
+
+STANDARD LIBRARY
+goos: darwin
+goarch: amd64
+pkg: github.com/schigh/go-proofs/jsoniterator_vs_stdlib/stdlib
+BenchmarkRun
+BenchmarkRun/stdlib
+BenchmarkRun/stdlib-12         	  673800	      1776 ns/op	     320 B/op	       8 allocs/op
+PASS
+ok  	github.com/schigh/go-proofs/jsoniterator_vs_stdlib/stdlib	2.497s
+
+
+JSONITERATOR USING STDLIB-COMPATIBLE CONFIG
+goos: darwin
+goarch: amd64
+pkg: github.com/schigh/go-proofs/jsoniterator_vs_stdlib/jsoniterator_compat
+BenchmarkRun
+BenchmarkRun/jsoniterator_compat
+BenchmarkRun/jsoniterator_compat-12         	  469503	      2267 ns/op	     472 B/op	      16 allocs/op
+PASS
+ok  	github.com/schigh/go-proofs/jsoniterator_vs_stdlib/jsoniterator_compat	1.200s
+
+
+JSONITERATOR USING FASTEST CONFIG
+goos: darwin
+goarch: amd64
+pkg: github.com/schigh/go-proofs/jsoniterator_vs_stdlib/jsoniterator_fastest
+BenchmarkRun
+BenchmarkRun/jsoniterator_fastest
+BenchmarkRun/jsoniterator_fastest-12         	  450998	      2274 ns/op	     472 B/op	      16 allocs/op
+PASS
+ok  	github.com/schigh/go-proofs/jsoniterator_vs_stdlib/jsoniterator_fastest	1.144s

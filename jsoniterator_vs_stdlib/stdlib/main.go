@@ -10,12 +10,12 @@ type Foo struct {
 
 type Bar struct {
 	Name string `json:"name"`
-	Foos []Foo `json:"foos"`
+	Foos []Foo  `json:"foos"`
 }
 
 type Baz struct {
 	Name string `json:"name"`
-	Bar *Bar `json:"bar"`
+	Bar  *Bar   `json:"bar"`
 }
 
 func (b *Bar) MarshalJSON() ([]byte, error) {
@@ -24,7 +24,7 @@ func (b *Bar) MarshalJSON() ([]byte, error) {
 	if a.Foos == nil {
 		a.Foos = make([]Foo, 0)
 	}
-	return  json.Marshal(a)
+	return json.Marshal(a)
 }
 
 func (b *Baz) MarshalJSON() ([]byte, error) {
@@ -33,7 +33,7 @@ func (b *Baz) MarshalJSON() ([]byte, error) {
 	if a.Bar == nil {
 		a.Bar = &Bar{}
 	}
-	return  json.Marshal(a)
+	return json.Marshal(a)
 }
 
 func main() {
@@ -42,13 +42,13 @@ func main() {
 
 func run() {
 	var err error
-	b := &Bar{Name:"bar"}
+	b := &Bar{Name: "bar"}
 	_, err = json.Marshal(b)
 	if err != nil {
 		panic(err)
 	}
 
-	b2 := &Baz{Name:"baz"}
+	b2 := &Baz{Name: "baz"}
 	_, err = json.Marshal(b2)
 	if err != nil {
 		panic(err)
