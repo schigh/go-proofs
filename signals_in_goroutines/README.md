@@ -45,18 +45,18 @@ or `SIGINT` to the program.  Note that the program terminates immediately.
 
 ## why is this happening?
 
-When termination signals are delegated to a child thread (not goroutine), they only 
-immediately affect activity in itself and any subsequent child threads.  The signal 
-WILL propagate upward to the parent thread, but the parent thread will not terminate 
-until there are no other active child threads, or all other child threads are blocked.
+When termination signals are delegated to a child goroutine, they only 
+immediately affect activity in itself and any subsequent child goroutines.  The signal 
+WILL propagate upward to the parent goroutine, but the parent goroutine will not terminate 
+until there are no other active child goroutines, or all other child goroutines are blocked.
 
 ### Caveat #1
 In the `TaskRunner` struct, you could listen for context cancellation to terminate the goroutine.  However, that would push the responsibility of termination downstream, effectively making it "opt-in" logic.  The main goroutine still cedes control in this situation.
 ```go
 if runner.Delay > 0 {
-  select {
-  case <-ctx.Done(): //context cancelled
-  case <-time.After(runner.Delay):
-  }
+    select {
+    case <-ctx.Done():
+    case <-time.After(runner.Delay):
+    }
 }
 ```
