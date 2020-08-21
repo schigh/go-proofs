@@ -2,7 +2,7 @@
 
 Every developer carries with them, whether they are aware of it or not, a set of 
 assumptions about their code.  These assumptions are either made from experience, 
-instincts formed from using other languages or were handed down to them by someone
+instincts formed from using other languages, or were handed down to them by someone
 else.
 
 It is up to the developer to check themselves and do the work to make sure their 
